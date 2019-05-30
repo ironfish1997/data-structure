@@ -91,6 +91,81 @@ public class BST<E extends Comparable<E>> {
         levelOrder(root);
     }
 
+    /**
+     * 从二分搜索树删除元素为e的节点
+     */
+    public void remove(E e) {
+        root = remove(root, e);
+    }
+
+    private Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+            if (node.left == null) {
+                Node nodeRight = node.right;
+                node = null;
+                size--;
+                return nodeRight;
+            } else if (node.right == null) {
+                Node nodeLeft = node.left;
+                node = null;
+                size--;
+                return nodeLeft;
+            } else {
+                Node rightMin = minimum(node.right);
+                rightMin.right = removeMin(rightMin);
+                rightMin.left = node.left;
+                node.left = node.right = null;
+                return rightMin;
+            }
+        }
+    }
+
+    // 从二分搜索树中删除最小值所在节点, 返回最小值
+    public E removeMin() {
+        E ret = minimum();
+        root = removeMin(root);
+        return ret;
+    }
+
+    // 删除掉以node为根的二分搜索树中的最小节点
+    // 返回删除节点后新的二分搜索树的根
+    private Node removeMin(Node node) {
+
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    // 寻找二分搜索树的最小元素
+    public E minimum() {
+        if (size == 0) throw new IllegalArgumentException("BST is empty");
+
+        Node minNode = minimum(root);
+        return minNode.e;
+    }
+
+    // 返回以node为根的二分搜索树的最小值所在的节点
+    private Node minimum(Node node) {
+        if (node.left == null) return node;
+
+        return minimum(node.left);
+    }
+
     private void levelOrder(Node node) {
         Queue<Node> q = new LinkedListQueue<>();
         q.enqueue(node);

@@ -78,6 +78,21 @@ public class LinkedList<E> {
         return cur.e;
     }
 
+    // 从链表中删除元素e
+    public void removeElement(E e) {
+        Node prev = dummyHead;
+        while (prev.next != null) {
+            if (prev.next.e.equals(e)) break;
+            prev = prev.next;
+        }
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+            size--;
+        }
+    }
+
     //在链表中删除第一个元素
     public E removeFirst() {
         return remove(0);
@@ -149,5 +164,26 @@ public class LinkedList<E> {
         }
         res.append("Null");
         return res.toString();
+    }
+
+    public static void main(String[] args) {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for (int i = 0; i < 5; i++) {
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
+        }
+
+        linkedList.add(2, 666);
+        System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
+
     }
 }
