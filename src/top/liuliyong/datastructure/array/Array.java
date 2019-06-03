@@ -19,6 +19,12 @@ public class Array<E> {
         size = 0;
     }
 
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        System.arraycopy(arr, 0, data, 0, arr.length);
+        size = arr.length;
+    }
+
     //获取数组中的元素个数
     public int getSize() {
         return size;
@@ -97,6 +103,18 @@ public class Array<E> {
         return ret;
     }
 
+    /**
+     * 交换数组中i下标元素和j下标元素的位置
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i > getSize() - 1 || j < 0 || j > getSize() - 1) {
+            throw new IllegalArgumentException("index is out of range");
+        }
+        E iOri = data[i];
+        data[i] = data[j];
+        data[j] = iOri;
+    }
+
     //从数组中删除第一个元素
     public E removeFirst() {
         if (size == 0 || data.length == 0) {
@@ -138,11 +156,11 @@ public class Array<E> {
         size++;
     }
 
-    public E getLast(){
-        return get(size-1);
+    public E getLast() {
+        return get(size - 1);
     }
 
-    public E getFirst(){
+    public E getFirst() {
         return get(0);
     }
 
