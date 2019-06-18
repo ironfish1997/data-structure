@@ -15,9 +15,7 @@ public class SegmentTree<E> {
     public SegmentTree(E[] arr, Merger<E> merger) {
         this.merger = merger;
         data = (E[]) new Object[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            data[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, data, 0, arr.length);
         tree = (E[]) new Object[4 * arr.length];
         buildSegmentTree(0, 0, data.length - 1);
     }
@@ -60,28 +58,6 @@ public class SegmentTree<E> {
         return 2 * index + 2;
     }
 
-
-    /**
-     * Returns a string representation of the object. In general, the
-     * {@code toString} method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     * It is recommended that all subclasses override this method.
-     * <p>
-     * The {@code toString} method for class {@code Object}
-     * returns a string consisting of the name of the class of which the
-     * object is an instance, the at-sign character `{@code @}', and
-     * the unsigned hexadecimal representation of the hash code of the
-     * object. In other words, this method returns a string equal to the
-     * value of:
-     * <blockquote>
-     * <pre>
-     * getClass().getName() + '@' + Integer.toHexString(hashCode())
-     * </pre></blockquote>
-     *
-     * @return a string representation of the object.
-     */
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
