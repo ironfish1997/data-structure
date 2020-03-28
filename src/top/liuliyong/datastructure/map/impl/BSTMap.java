@@ -4,19 +4,6 @@ import top.liuliyong.datastructure.map.Map;
 
 public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
 
-    private class Node {
-        K key;
-        V value;
-        Node left, right;
-
-        Node(K key, V value) {
-            this.key = key;
-            this.value = value;
-            left = null;
-            right = null;
-        }
-    }
-
     private Node root;
     private int size;
 
@@ -161,6 +148,19 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
             node.left = node.right = null;
 
             return successor;
+        }
+    }
+
+    private class Node {
+        K key;
+        V value;
+        Node left, right;
+
+        Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+            left = null;
+            right = null;
         }
     }
 
