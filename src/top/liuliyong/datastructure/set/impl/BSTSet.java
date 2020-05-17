@@ -1,6 +1,6 @@
 package top.liuliyong.datastructure.set.impl;
 
-import top.liuliyong.datastructure.binarySearchTree.BST;
+import top.liuliyong.datastructure.binarysearchtree.BST;
 import top.liuliyong.datastructure.set.Set;
 
 /**

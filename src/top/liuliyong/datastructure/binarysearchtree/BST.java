@@ -1,4 +1,4 @@
-package top.liuliyong.datastructure.binarySearchTree;
+package top.liuliyong.datastructure.binarysearchtree;
 
 import top.liuliyong.datastructure.queue.LinkedListQueue;
 import top.liuliyong.datastructure.queue.Queue;

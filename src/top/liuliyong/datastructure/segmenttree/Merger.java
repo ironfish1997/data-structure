@@ -1,4 +1,4 @@
-package top.liuliyong.datastructure.segmentTree;
+package top.liuliyong.datastructure.segmenttree;
 
 /**
  * @Author liyong.liu
